@@ -7,8 +7,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  body, h1, h2 {
     margin: 0;
     font-family: system-ui;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
