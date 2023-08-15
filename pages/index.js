@@ -1,7 +1,11 @@
+import Card from "@/components/Card";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <main>
+      <h1>Bingo</h1>
+      <h2>Play</h2>
+      <Card />
+    </main>
   );
 }
