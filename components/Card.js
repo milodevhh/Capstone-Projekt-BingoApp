@@ -2,7 +2,7 @@ import initialCards from "@/lib/db";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function Card({}) {
+export default function GridOfCards() {
   const [cards, setCards] = useState(initialCards);
   function handleActive(id) {
     const updatedCards = cards.map((card) => {
@@ -17,7 +17,6 @@ export default function Card({}) {
       }
     });
     setCards(updatedCards);
-    console.log(updatedCards);
   }
   return (
     <>
@@ -33,12 +32,11 @@ export default function Card({}) {
           </GameCard>
         ))}
       </GridContainer>
-      <p>You can add your own Playcards later on.</p>
     </>
   );
 }
 
-const GridContainer = styled.div`
+const GridContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -47,13 +45,13 @@ const GridContainer = styled.div`
   padding: 2rem;
 `;
 
-const GameCard = styled.button`
+const GameCard = styled.li`
+  list-style: none;
   height: 5rem;
   &:hover {
     border-color: white;
   }
-  background-color: ${(props) =>
-    props.$isActive ? "#f2e7ae" : "#add1d9"}; // was eine Zauberformel
+  background-color: ${(props) => (props.$isActive ? "#f2e7ae" : "#add1d9")};
   border-radius: 1rem;
   border: solid black 0.1rem;
 
