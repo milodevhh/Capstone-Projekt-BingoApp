@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { Fragment } from "react";
 
 export default function Form({ onSubmit, formName }) {
   const router = useRouter();
@@ -8,15 +7,14 @@ export default function Form({ onSubmit, formName }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
   }
 
   return (
-    <Form aria-labelledby={formName} onSubmit={onSubmit}>
-      <Label htmlFor="name">Name</Label>
-      <Input id="name" name="name" type="text" />
+    <form aria-labelledby={formName} onSubmit={onSubmit}>
+      <label htmlFor="name">Name</label>
+      <input id="name" name="name" type="text" />
 
-      <Label htmlFor="icon">Choose a icon:</Label>
+      <label htmlFor="icon">Choose a icon:</label>
 
       <select name="icon" id="icon">
         <option value="">--Please choose an icon--</option>
@@ -29,6 +27,6 @@ export default function Form({ onSubmit, formName }) {
       </select>
 
       <button></button>
-    </Form>
+    </form>
   );
 }
