@@ -1,22 +1,40 @@
-import cards from "@/lib/db";
-import { Fragment, useState } from "react";
+import initialCards from "@/lib/db";
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function Card({}) {
-  const [backgroundColor, setBackgroundColor] = useState("#add1d9");
-  function handleClick() {
-    setBackgroundColor(backgroundColor === "#add1d9" ? "#F2E7AE" : "#add1d9");
+  const [cards, setCards] = useState(initialCards);
+  function handleActive(id) {
+    const updatedCards = cards.map((card) => {
+      if (card.id !== id) {
+        return card;
+      } else {
+        const updatedCard = {
+          ...card,
+          isActive: !card.isActive,
+        };
+        return updatedCard;
+      }
+    });
+    setCards(updatedCards);
+    console.log(updatedCards);
   }
   return (
-    <GridContainer>
-      {cards.map((card) => (
-        <Fragment key={card.id}>
-          <GameCards onClick={handleClick} style={{ backgroundColor }}>
+    <>
+      <GridContainer>
+        {cards.map((card) => (
+          <GameCard
+            key={card.id}
+            type="button"
+            onClick={() => handleActive(card.id)}
+            $isActive={card.isActive}
+          >
             {card.name} {card.icon}
-          </GameCards>
-        </Fragment>
-      ))}
-    </GridContainer>
+          </GameCard>
+        ))}
+      </GridContainer>
+      <p>You can add your own Playcards later on.</p>
+    </>
   );
 }
 
@@ -29,12 +47,17 @@ const GridContainer = styled.div`
   padding: 2rem;
 `;
 
-const GameCards = styled.button`
+const GameCard = styled.button`
   height: 5rem;
-  background-color: #add1d9;
+  &:hover {
+    border-color: white;
+  }
+  background-color: ${(props) =>
+    props.$isActive ? "#f2e7ae" : "#add1d9"}; // was eine Zauberformel
   border-radius: 1rem;
   border: solid black 0.1rem;
-  &:hover {
-    background-color: #f2e7ae;
+
+  &:active {
+    transform: scale(0.95);
   }
 `;
