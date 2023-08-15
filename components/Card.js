@@ -22,14 +22,16 @@ export default function GridOfCards() {
     <>
       <GridContainer>
         {cards.map((card) => (
-          <GameCard
-            key={card.id}
-            type="button"
-            onClick={() => handleActive(card.id)}
-            $isActive={card.isActive}
-          >
-            {card.name} {card.icon}
-          </GameCard>
+          <GameCardWrapper key={card.id}>
+            <GameCard
+              type="button"
+              onClick={() => handleActive(card.id)}
+              $isActive={card.isActive}
+            >
+              {card.name}
+              {card.icon}
+            </GameCard>
+          </GameCardWrapper>
         ))}
       </GridContainer>
     </>
@@ -45,9 +47,12 @@ const GridContainer = styled.ul`
   padding: 2rem;
 `;
 
-const GameCard = styled.li`
+const GameCardWrapper = styled.li`
   list-style: none;
-  height: 5rem;
+`;
+
+const GameCard = styled.button`
+  height: 4rem;
   &:hover {
     border-color: white;
   }
