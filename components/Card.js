@@ -2,7 +2,7 @@ import initialCards from "@/lib/db";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function GridOfCards() {
+export default function GridOfCards({ newCard }) {
   const [cards, setCards] = useState(initialCards);
   function handleActive(id) {
     const updatedCards = cards.map((card) => {

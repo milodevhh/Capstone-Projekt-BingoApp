@@ -1,23 +1,20 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
-export default function Form({ onSubmit, formName }) {
+export default function Form({ submitNewCard, formName }) {
   const router = useRouter();
 
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
 
+    submitNewCard(data.name, data.icon);
     console.log(data);
-
-    event.target.reset();
-    router.push("/");
   }
 
   return (
-    <StyledForm aria-labelledby={formName} onSubmit={onSubmit}>
+    <StyledForm aria-labelledby={formName} onSubmit={handleSubmit}>
       <label htmlFor="name">Name or Text:</label>
       <input
         id="name"
@@ -48,7 +45,7 @@ export default function Form({ onSubmit, formName }) {
         <option value="campfire">🔥</option>
         <option value="tent">⛺️</option>
       </select>
-      <StyledSubmit type="submit">Add cards</StyledSubmit>
+      <StyledSubmitButton type="submit">Add card</StyledSubmitButton>
     </StyledForm>
   );
 }
@@ -60,7 +57,7 @@ const StyledForm = styled.form`
   justify-content: center;
 `;
 
-const StyledSubmit = styled.button`
+const StyledSubmitButton = styled.button`
   padding: 0.8rem;
   border-radius: 0.6rem;
   color: black;
