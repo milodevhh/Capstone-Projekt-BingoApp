@@ -3,28 +3,30 @@ import GlobalStyle from "../styles";
 
 import { uid } from "uid";
 import initialCards from "@/lib/db";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
-  const [newCard, setNewCard] = useState(initialCards);
+  const [cards, setCards] = useLocalStorageState("initialCards", {
+    defaultValue: initialCards,
+  });
 
   function submitNewCard(name, icon) {
-    const newCards = {
+    const newCard = {
       id: uid(),
       icon: icon,
       name: name,
       isActive: false,
     };
-    setNewCard([...newCard, newCards]);
+    setCards([...cards, newCard]);
   }
-
-  console.log(newCard);
 
   return (
     <>
       <GlobalStyle />
       <Component
         {...pageProps}
-        newCard={newCard}
+        cards={cards}
+        setCards={setCards}
         submitNewCard={submitNewCard}
       />
     </>

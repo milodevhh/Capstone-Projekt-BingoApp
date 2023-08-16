@@ -8,9 +8,11 @@ export default function Form({ submitNewCard, formName }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
 
     submitNewCard(data.name, data.icon);
+
+    event.target.reset();
+    router.push("/");
   }
 
   return (
@@ -27,23 +29,23 @@ export default function Form({ submitNewCard, formName }) {
       <label htmlFor="icon">Choose an icon:</label>
       <select name="icon" id="icon">
         <option value="">--Please choose an icon--</option>
-        <option value="tractor">🚜</option>
-        <option value="horse">🐴</option>
-        <option value="dear">🦌</option>
-        <option value="sunflower">🌻</option>
-        <option value="rainbow">🌈</option>
-        <option value="motorcycle">🏍️</option>
-        <option value="RV">🚐</option>
-        <option value="truck">🚚</option>
-        <option value="camper">🚍</option>
-        <option value="bicycle">🚲</option>
+        <option value="🚜">🚜</option>
+        <option value="🐴">🐴</option>
+        <option value="🦌">🦌</option>
+        <option value="🌻">🌻</option>
+        <option value="🌈">🌈</option>
+        <option value="🏍️">🏍️</option>
+        <option value="🚐">🚐</option>
+        <option value="🚚">🚚</option>
+        <option value="🚍">🚍</option>
+        <option value="🚲">🚲</option>
         <option value="🛴">🛴</option>
-        <option value="traffic light">🚦</option>
-        <option value="fuel pump">⛽️</option>
-        <option value="sunrise">🌅</option>
-        <option value="mountain">⛰️</option>
-        <option value="campfire">🔥</option>
-        <option value="tent">⛺️</option>
+        <option value="🚦">🚦</option>
+        <option value="⛽️">⛽️</option>
+        <option value="🌅">🌅</option>
+        <option value="⛰️">⛰️</option>
+        <option value="🔥">🔥</option>
+        <option value="⛺️">⛺️</option>
       </select>
       <StyledSubmitButton type="submit">Add card</StyledSubmitButton>
     </StyledForm>

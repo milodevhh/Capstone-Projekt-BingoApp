@@ -2,10 +2,7 @@ import initialCards from "@/lib/db";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 
-export default function GridOfCards({ newCard }) {
-  const [cards, setCards] = useLocalStorageState("initialCards", {
-    defaultValue: initialCards,
-  });
+export default function GridOfCards({ cards, setCards }) {
   function handleActive(id) {
     const updatedCards = cards.map((card) => {
       if (card.id !== id) {
@@ -20,7 +17,6 @@ export default function GridOfCards({ newCard }) {
     });
     setCards(updatedCards);
   }
-  console.log(newCard);
 
   return (
     <>
