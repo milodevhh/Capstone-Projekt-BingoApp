@@ -1,7 +1,8 @@
 import { useState } from "react";
 import GlobalStyle from "../styles";
-import { initialCards } from "@/lib/db";
+
 import { uid } from "uid";
+import initialCards from "@/lib/db";
 
 export default function App({ Component, pageProps }) {
   const [newCard, setNewCard] = useState(initialCards);
@@ -13,9 +14,10 @@ export default function App({ Component, pageProps }) {
       name: name,
       isActive: false,
     };
-    console.log(newCards);
     setNewCard([...newCard, newCards]);
   }
+
+  console.log(newCard);
 
   return (
     <>
