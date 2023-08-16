@@ -1,12 +1,12 @@
 import Card from "@/components/Card";
 import Navigation from "@/components/Navigation";
 
-export default function HomePage() {
+export default function HomePage({ newCard }) {
   return (
     <main>
       <h1>Bingo</h1>
       <h2>Play</h2>
-      <Card />
+      <Card newCard={newCard} />
       <Navigation />
     </main>
   );

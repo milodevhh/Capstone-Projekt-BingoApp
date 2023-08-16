@@ -8,9 +8,9 @@ export default function Form({ submitNewCard, formName }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    console.log(data);
 
     submitNewCard(data.name, data.icon);
-    console.log(data);
   }
 
   return (
@@ -37,7 +37,7 @@ export default function Form({ submitNewCard, formName }) {
         <option value="truck">🚚</option>
         <option value="camper">🚍</option>
         <option value="bicycle">🚲</option>
-        <option value="scooter">🛴</option>
+        <option value="🛴">🛴</option>
         <option value="traffic light">🚦</option>
         <option value="fuel pump">⛽️</option>
         <option value="sunrise">🌅</option>
