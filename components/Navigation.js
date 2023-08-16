@@ -23,8 +23,7 @@ const StyledNavigation = styled.nav`
 `;
 
 export const StyledLink = styled(Link)`
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  color: white;
-  text-decoration: none;
+  &:active {
+    transform: scale(0.95);
+  }
 `;
