@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 
-export default function Form({ submitNewCard, formName }) {
+export default function Form({ submitNewCard }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -16,7 +16,7 @@ export default function Form({ submitNewCard, formName }) {
   }
 
   return (
-    <StyledForm aria-labelledby={formName} onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="name">Name or Text:</label>
       <input
         id="name"
