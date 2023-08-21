@@ -1,6 +1,4 @@
-import initialCards from "@/lib/db";
 import styled from "styled-components";
-import useLocalStorageState from "use-local-storage-state";
 
 export default function GridOfCards({ cards, setCards }) {
   function handleActive(id) {
