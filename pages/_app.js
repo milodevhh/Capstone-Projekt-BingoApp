@@ -19,6 +19,8 @@ export default function App({ Component, pageProps }) {
     setCards([...cards, newCard]);
   }
 
+  console.log(cards);
+
   function handleUpdateCards(updatedCards) {
     setCards(updatedCards);
   }
