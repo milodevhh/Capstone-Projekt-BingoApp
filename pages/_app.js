@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GlobalStyle from "../styles";
 
 import { uid } from "uid";
@@ -20,6 +19,10 @@ export default function App({ Component, pageProps }) {
     setCards([...cards, newCard]);
   }
 
+  function handleUpdateCards(updatedCards) {
+    setCards(updatedCards);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -28,6 +31,7 @@ export default function App({ Component, pageProps }) {
         cards={cards}
         setCards={setCards}
         submitNewCard={submitNewCard}
+        handleUpdateCards={handleUpdateCards}
       />
     </>
   );

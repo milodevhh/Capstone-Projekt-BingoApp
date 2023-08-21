@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function GridOfCards({ cards, setCards }) {
+export default function GridOfCards({ cards, handleUpdateCards }) {
   function handleActive(id) {
     const updatedCards = cards.map((card) => {
       if (card.id !== id) {
@@ -13,7 +13,7 @@ export default function GridOfCards({ cards, setCards }) {
         return updatedCard;
       }
     });
-    setCards(updatedCards);
+    handleUpdateCards(updatedCards);
   }
 
   return (
