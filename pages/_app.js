@@ -19,10 +19,23 @@ export default function App({ Component, pageProps }) {
     setCards([...cards, newCard]);
   }
 
+  function updateCard(name, icon, id) {
+    const updatedCards = cards.map((card) => {
+      if (card.id !== id) {
+        return card;
+      } else {
+        card.name = name;
+        card.icon = icon;
+        return card;
+      }
+    });
+    setCards(updatedCards);
+  }
+
   console.log(cards);
 
-  function handleUpdateCards(updatedCards) {
-    setCards(updatedCards);
+  function handleActiveCards(activeCards) {
+    setCards(activeCards);
   }
 
   return (
@@ -33,7 +46,8 @@ export default function App({ Component, pageProps }) {
         cards={cards}
         setCards={setCards}
         submitNewCard={submitNewCard}
-        handleUpdateCards={handleUpdateCards}
+        handleActiveCards={handleActiveCards}
+        updateCard={updateCard}
       />
     </>
   );

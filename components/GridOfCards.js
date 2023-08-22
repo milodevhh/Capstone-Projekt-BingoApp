@@ -1,19 +1,20 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export default function GridOfCards({ cards, handleUpdateCards }) {
+export default function GridOfCards({ cards, handleActiveCards, isEditMode }) {
   function handleActive(id) {
-    const updatedCards = cards.map((card) => {
+    const activeCards = cards.map((card) => {
       if (card.id !== id) {
         return card;
       } else {
-        const updatedCard = {
+        const activeCard = {
           ...card,
           isActive: !card.isActive,
         };
-        return updatedCard;
+        return activeCard;
       }
     });
-    handleUpdateCards(updatedCards);
+    handleActiveCards(activeCards);
   }
 
   return (
@@ -21,14 +22,21 @@ export default function GridOfCards({ cards, handleUpdateCards }) {
       <GridContainer>
         {cards.map((card) => (
           <GameCardWrapper key={card.id}>
-            <GameCard
-              type="button"
-              onClick={() => handleActive(card.id)}
-              $isActive={card.isActive}
-            >
-              {card.name}
-              {card.icon}
-            </GameCard>
+            {isEditMode ? (
+              <GameCardLink href={`/cards/${card.id}`}>
+                {card.name}
+                {card.icon}
+              </GameCardLink>
+            ) : (
+              <GameCard
+                type="button"
+                onClick={() => handleActive(card.id)}
+                $isActive={card.isActive}
+              >
+                {card.name}
+                {card.icon}
+              </GameCard>
+            )}
           </GameCardWrapper>
         ))}
       </GridContainer>
@@ -41,9 +49,8 @@ const GridContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0.1rem;
-  grid-row-gap: 0.1rem;
-  padding: 1rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
 `;
 
 const GameCardWrapper = styled.li`
@@ -53,7 +60,8 @@ const GameCardWrapper = styled.li`
 
 const GameCard = styled.button`
   width: 100%;
-  height: 4rem;
+  padding: 1.5rem 0;
+
   &:hover {
     border-color: white;
   }
@@ -64,4 +72,19 @@ const GameCard = styled.button`
   &:active {
     transform: scale(0.95);
   }
+`;
+
+const GameCardLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  padding: 1.5rem 0;
+  width: 100%;
+  &:hover {
+    border-color: white;
+  }
+  background-color: ${(props) => (props.$isActive ? "#f2e7ae" : "#add1d9")};
+  border-radius: 0.5rem;
+  border: solid black 0.1rem;
 `;

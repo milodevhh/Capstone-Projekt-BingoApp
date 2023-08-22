@@ -2,14 +2,14 @@ import Form from "@/components/Form";
 import Navigation from "@/components/Navigation";
 import GridOfCards from "@/components/GridOfCards";
 
-export default function EditPage({ cards, submitNewCard, handleUpdateCards }) {
+export default function EditPage({ cards, submitNewCard, updateCard }) {
   return (
     <main>
       <h1>Game cards</h1>
       <h2>Add your own Game cards.</h2>
 
       <Form submitNewCard={submitNewCard} />
-      <GridOfCards cards={cards} handleUpdateCards={handleUpdateCards} />
+      <GridOfCards cards={cards} isEditMode={true} updateCard={updateCard} />
       <Navigation />
     </main>
   );
