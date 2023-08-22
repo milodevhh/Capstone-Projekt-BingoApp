@@ -6,6 +6,11 @@ import { styled } from "styled-components";
 export default function CardsEdit({ cards, updateCard }) {
   const router = useRouter();
   const card = cards.find(({ id }) => id === router.query.id);
+  const currentPage = router.query.id;
+
+  if (!currentPage) {
+    return null;
+  }
 
   return (
     <main>

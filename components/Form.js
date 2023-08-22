@@ -55,9 +55,7 @@ export default function Form({ submitNewCard, card, updateCard }) {
         <option value="🔥">🔥</option>
         <option value="⛺️">⛺️</option>
       </select>
-      <StyledButton type="submit">
-        {card ? "Update card" : "Add card"}
-      </StyledButton>
+      <StyledButton type="submit">{card ? "Save" : "Add card"}</StyledButton>
     </StyledForm>
   );
 }
