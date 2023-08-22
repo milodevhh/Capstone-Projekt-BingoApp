@@ -38,6 +38,10 @@ export default function Form({ submitNewCard, card, updateCard }) {
         <option value="🦌">🦌</option>
         <option value="🌻">🌻</option>
         <option value="🌈">🌈</option>
+        <option value="🐗">🐗</option>
+        <option value="🎡">🎡</option>
+        <option value="🛝">🛝</option>
+        <option value="🍓">🍓</option>
         <option value="🏍️">🏍️</option>
         <option value="🚐">🚐</option>
         <option value="🚚">🚚</option>
