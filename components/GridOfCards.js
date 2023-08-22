@@ -60,7 +60,8 @@ const GameCardWrapper = styled.li`
 
 const GameCard = styled.button`
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1rem;
+  height: auto;
 
   &:hover {
     border-color: white;
