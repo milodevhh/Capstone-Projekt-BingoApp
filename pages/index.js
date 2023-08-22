@@ -1,12 +1,12 @@
-import Card from "@/components/Card";
+import GridOfCards from "@/components/GridOfCards";
 import Navigation from "@/components/Navigation";
 
-export default function HomePage({ cards, setCards }) {
+export default function HomePage({ cards, handleActiveCards }) {
   return (
     <main>
       <h1>Bingo</h1>
       <h2>Play</h2>
-      <Card cards={cards} setCards={setCards} />
+      <GridOfCards cards={cards} handleActiveCards={handleActiveCards} />
       <Navigation />
     </main>
   );

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GlobalStyle from "../styles";
 
 import { uid } from "uid";
@@ -20,6 +19,25 @@ export default function App({ Component, pageProps }) {
     setCards([...cards, newCard]);
   }
 
+  function updateCard(name, icon, id) {
+    const updatedCards = cards.map((card) => {
+      if (card.id !== id) {
+        return card;
+      } else {
+        card.name = name;
+        card.icon = icon;
+        return card;
+      }
+    });
+    setCards(updatedCards);
+  }
+
+  console.log(cards);
+
+  function handleActiveCards(activeCards) {
+    setCards(activeCards);
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -28,6 +46,8 @@ export default function App({ Component, pageProps }) {
         cards={cards}
         setCards={setCards}
         submitNewCard={submitNewCard}
+        handleActiveCards={handleActiveCards}
+        updateCard={updateCard}
       />
     </>
   );

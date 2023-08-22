@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
+import { StyledButton } from "./StyledButton";
 
-export default function Form({ submitNewCard }) {
+export default function Form({ submitNewCard, card, updateCard }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -9,7 +10,9 @@ export default function Form({ submitNewCard }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    submitNewCard(data.name, data.icon);
+    card
+      ? updateCard(data.name, data.icon, card.id)
+      : submitNewCard(data.name, data.icon);
 
     event.target.reset();
     router.push("/");
@@ -25,15 +28,20 @@ export default function Form({ submitNewCard }) {
         placeholder="Text for your card"
         pattern="[a-zA-Z]*"
         required
+        defaultValue={card && card.name}
       />
       <label htmlFor="icon">Choose an icon:</label>
-      <select name="icon" id="icon">
+      <select name="icon" id="icon" defaultValue={card && card.icon}>
         <option value="">--Please choose an icon--</option>
         <option value="🚜">🚜</option>
         <option value="🐴">🐴</option>
         <option value="🦌">🦌</option>
         <option value="🌻">🌻</option>
         <option value="🌈">🌈</option>
+        <option value="🐗">🐗</option>
+        <option value="🎡">🎡</option>
+        <option value="🛝">🛝</option>
+        <option value="🍓">🍓</option>
         <option value="🏍️">🏍️</option>
         <option value="🚐">🚐</option>
         <option value="🚚">🚚</option>
@@ -47,27 +55,18 @@ export default function Form({ submitNewCard }) {
         <option value="🔥">🔥</option>
         <option value="⛺️">⛺️</option>
       </select>
-      <StyledSubmitButton type="submit">Add card</StyledSubmitButton>
+      <StyledButton type="submit">{card ? "Save" : "Add card"}</StyledButton>
     </StyledForm>
   );
 }
 
 const StyledForm = styled.form`
-  gap: 2rem;
+  gap: 1rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const StyledSubmitButton = styled.button`
-  padding: 0.8rem;
-  border-radius: 0.6rem;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  font-size: inherit;
-  &:active {
-    transform: scale(0.95);
+  & label:last-of-type {
+    margin-top: 1rem;
   }
 `;
