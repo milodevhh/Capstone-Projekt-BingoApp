@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { styled } from "styled-components";
 import { StyledButton } from "./StyledButton";
+import { StyledForm } from "./StyledForm";
 
 export default function Form({
   submitNewCard,
@@ -20,7 +21,7 @@ export default function Form({
       : submitNewCard(data.name, data.icon);
 
     event.target.reset();
-    router.push("/");
+    router.push("/edit");
   }
 
   return (
@@ -63,24 +64,11 @@ export default function Form({
       <StyledButton type="submit">
         {card ? "Save card" : "Add card"}
       </StyledButton>
-      <StyledButton
-        type="button"
-        buttonText="Delete"
-        onClick={() => handleDelete(card.id)}
-      >
-        Delete card
-      </StyledButton>
+      {card && (
+        <StyledButton type="button" onClick={() => handleDelete(card.id)}>
+          Delete card
+        </StyledButton>
+      )}
     </StyledForm>
   );
 }
-
-const StyledForm = styled.form`
-  gap: 1rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  & label:last-of-type {
-    margin-top: 1rem;
-  }
-`;

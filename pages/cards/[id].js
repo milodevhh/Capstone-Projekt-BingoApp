@@ -1,11 +1,11 @@
 import Form from "@/components/Form";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function CardsEdit({ cards, updateCard, handleDelete }) {
   const router = useRouter();
-  const card = cards.find((card) => card.id == router.query.id);
+  const card = cards.find(({ id }) => id == router.query.id);
   const currentPage = router.query.id;
 
   if (!currentPage) {
@@ -16,7 +16,7 @@ export default function CardsEdit({ cards, updateCard, handleDelete }) {
 
   return (
     <main>
-      {card.name} {card.icon}
+      {card && card.name} {card && card.icon}
       <Form card={card} updateCard={updateCard} handleDelete={handleDelete} />
       <StyledLink href={"/edit"}>go back</StyledLink>
     </main>
