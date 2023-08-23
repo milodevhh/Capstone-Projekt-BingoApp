@@ -2,7 +2,12 @@ import { useRouter } from "next/router";
 import { styled } from "styled-components";
 import { StyledButton } from "./StyledButton";
 
-export default function Form({ submitNewCard, card, updateCard }) {
+export default function Form({
+  submitNewCard,
+  card,
+  updateCard,
+  handleDelete,
+}) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -55,7 +60,16 @@ export default function Form({ submitNewCard, card, updateCard }) {
         <option value="🔥">🔥</option>
         <option value="⛺️">⛺️</option>
       </select>
-      <StyledButton type="submit">{card ? "Save" : "Add card"}</StyledButton>
+      <StyledButton type="submit">
+        {card ? "Save card" : "Add card"}
+      </StyledButton>
+      <StyledButton
+        type="button"
+        buttonText="Delete"
+        onClick={() => handleDelete(card.id)}
+      >
+        Delete card
+      </StyledButton>
     </StyledForm>
   );
 }
