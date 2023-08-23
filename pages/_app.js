@@ -32,7 +32,9 @@ export default function App({ Component, pageProps }) {
     setCards(updatedCards);
   }
 
-  console.log(cards);
+  function handleDelete(id) {
+    const deleteCards = cards.filter((card) => card.id !== id);
+  }
 
   function handleActiveCards(activeCards) {
     setCards(activeCards);
@@ -48,6 +50,7 @@ export default function App({ Component, pageProps }) {
         submitNewCard={submitNewCard}
         handleActiveCards={handleActiveCards}
         updateCard={updateCard}
+        handleDelete={handleDelete}
       />
     </>
   );
