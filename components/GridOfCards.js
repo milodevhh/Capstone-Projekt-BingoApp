@@ -3,17 +3,19 @@ import styled from "styled-components";
 
 export default function GridOfCards({ cards, handleActiveCards, isEditMode }) {
   function handleActive(id) {
-    const activeCards = cards.map((card) => {
-      if (card.id !== id) {
-        return card;
-      } else {
-        const activeCard = {
-          ...card,
-          isActive: !card.isActive,
-        };
-        return activeCard;
-      }
-    });
+    const activeCards =
+      cards &&
+      cards.map((card) => {
+        if (card.id !== id) {
+          return card;
+        } else {
+          const activeCard = {
+            ...card,
+            isActive: !card.isActive,
+          };
+          return activeCard;
+        }
+      });
     handleActiveCards(activeCards);
   }
 
