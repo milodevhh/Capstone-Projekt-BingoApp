@@ -20,6 +20,7 @@ const StyledNavigation = styled.nav`
   display: flex;
   gap: 2rem;
   justify-content: center;
+  padding-bottom: 1rem;
 `;
 
 export const StyledLink = styled(Link)`

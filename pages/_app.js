@@ -1,10 +1,11 @@
 import GlobalStyle from "../styles";
-
 import { uid } from "uid";
 import initialCards from "@/lib/db";
 import useLocalStorageState from "use-local-storage-state";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
   const [cards, setCards] = useLocalStorageState("initialCards", {
     defaultValue: initialCards,
   });
@@ -32,7 +33,17 @@ export default function App({ Component, pageProps }) {
     setCards(updatedCards);
   }
 
-  console.log(cards);
+  function handleDelete(id) {
+    const answer = window.confirm(
+      "Are you sure, Do you want to delete the card"
+    );
+    if (answer) {
+      const deleteCards = cards.filter((card) => card.id !== id);
+      setCards(deleteCards);
+
+      router.push("/");
+    }
+  }
 
   function handleActiveCards(activeCards) {
     setCards(activeCards);
@@ -48,6 +59,7 @@ export default function App({ Component, pageProps }) {
         submitNewCard={submitNewCard}
         handleActiveCards={handleActiveCards}
         updateCard={updateCard}
+        handleDelete={handleDelete}
       />
     </>
   );

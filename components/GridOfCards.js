@@ -3,17 +3,19 @@ import styled from "styled-components";
 
 export default function GridOfCards({ cards, handleActiveCards, isEditMode }) {
   function handleActive(id) {
-    const activeCards = cards.map((card) => {
-      if (card.id !== id) {
-        return card;
-      } else {
-        const activeCard = {
-          ...card,
-          isActive: !card.isActive,
-        };
-        return activeCard;
-      }
-    });
+    const activeCards =
+      cards &&
+      cards.map((card) => {
+        if (card.id !== id) {
+          return card;
+        } else {
+          const activeCard = {
+            ...card,
+            isActive: !card.isActive,
+          };
+          return activeCard;
+        }
+      });
     handleActiveCards(activeCards);
   }
 
@@ -60,7 +62,7 @@ const GameCardWrapper = styled.li`
 
 const GameCard = styled.button`
   width: 100%;
-  padding: 1.5rem 1rem;
+  padding: 2rem 1rem;
   height: auto;
 
   &:hover {
@@ -80,7 +82,9 @@ const GameCardLink = styled(Link)`
   text-decoration: none;
   color: black;
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 2rem 1rem;
+  height: auto;
+
   width: 100%;
   &:hover {
     border-color: white;
