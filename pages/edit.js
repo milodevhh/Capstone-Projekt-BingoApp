@@ -12,8 +12,8 @@ export default function EditPage({
 }) {
   return (
     <main>
-      <h1>Pool of Game cards</h1>
-      <h2>Add your own Game cards.</h2>
+      <h1>Pool of Gamecards</h1>
+      <h2>Add, edit or delete your own cards.</h2>
 
       <Form submitNewCard={submitNewCard} handleDelete={handleDelete} />
       <p>Please click on a card to edit or delete it.</p>
