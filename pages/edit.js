@@ -8,6 +8,7 @@ export default function EditPage({
   submitNewCard,
   updateCard,
   handleDelete,
+  shuffle,
 }) {
   return (
     <main>
@@ -17,7 +18,7 @@ export default function EditPage({
       <Form submitNewCard={submitNewCard} handleDelete={handleDelete} />
       <p>Please click on a card to edit or delete it.</p>
       <GridOfCards cards={cards} isEditMode={true} updateCard={updateCard} />
-      <StyledButton>Create new Bingo</StyledButton>
+      <StyledButton onClick={shuffle}>Create new Bingo</StyledButton>
       <Navigation />
     </main>
   );

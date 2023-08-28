@@ -1,7 +1,7 @@
 import GridOfCards from "@/components/GridOfCards";
 import Navigation from "@/components/Navigation";
 
-export default function HomePage({ cards, handleActiveCards }) {
+export default function HomePage({ cards, handleActiveCards, shuffledCards }) {
   return (
     <main>
       <h1>Bingo</h1>
@@ -10,7 +10,10 @@ export default function HomePage({ cards, handleActiveCards }) {
         Click on a card if you have seen what is shown on the card in your
         surroundings. Have fun playing...
       </p>
-      <GridOfCards cards={cards} handleActiveCards={handleActiveCards} />
+      <GridOfCards
+        cards={shuffledCards}
+        handleActiveCards={handleActiveCards}
+      />
       <p>
         The first player to complete a horizontal or vertical line shouts bingo
         loudly and wins.
