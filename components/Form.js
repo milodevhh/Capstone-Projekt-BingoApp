@@ -27,12 +27,14 @@ export default function Form({
   return (
     <StyledForm onSubmit={handleSubmit}>
       <label htmlFor="name">Name or Text:</label>
+
       <input
         id="name"
         name="name"
         type="text"
         placeholder="Text for your card"
         pattern="[a-zA-Z]*"
+        maxLength={15}
         required
         defaultValue={card && card.name}
       />
