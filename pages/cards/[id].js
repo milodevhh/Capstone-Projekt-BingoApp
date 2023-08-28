@@ -11,9 +11,6 @@ export default function CardsEdit({ cards, updateCard, handleDelete }) {
   if (!currentPage) {
     return null;
   }
-
-  console.log(cards);
-
   return (
     <main>
       <h1>Edit your card</h1>

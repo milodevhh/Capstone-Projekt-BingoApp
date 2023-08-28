@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
       const deleteCards = cards.filter((card) => card.id !== id);
       setCards(deleteCards);
 
-      router.push("/");
+      router.push("/edit");
     }
   }
 
