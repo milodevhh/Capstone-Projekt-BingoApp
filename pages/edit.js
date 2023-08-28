@@ -1,6 +1,7 @@
 import Form from "@/components/Form";
 import Navigation from "@/components/Navigation";
 import GridOfCards from "@/components/GridOfCards";
+import { StyledButton } from "@/components/StyledButton";
 
 export default function EditPage({
   cards,
@@ -15,6 +16,7 @@ export default function EditPage({
 
       <Form submitNewCard={submitNewCard} handleDelete={handleDelete} />
       <GridOfCards cards={cards} isEditMode={true} updateCard={updateCard} />
+      <StyledButton>Create new Bingo</StyledButton>
       <Navigation />
     </main>
   );
