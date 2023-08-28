@@ -10,6 +10,13 @@ export default function App({ Component, pageProps }) {
     defaultValue: initialCards,
   });
 
+  const [shuffledPlayCards, setShuffledPlayCards] = useLocalStorageState(
+    "shuffledPlayCards",
+    {
+      defaultValue: [],
+    }
+  );
+
   function submitNewCard(name, icon) {
     const newCard = {
       id: uid(),
@@ -41,12 +48,18 @@ export default function App({ Component, pageProps }) {
       const deleteCards = cards.filter((card) => card.id !== id);
       setCards(deleteCards);
 
-      router.push("/");
+      router.push("/edit");
     }
   }
 
+  function shuffle() {
+    const shuffledArray = [...cards].sort(() => Math.random() - 0.5);
+    setShuffledPlayCards(shuffledArray);
+    router.push("/");
+  }
+
   function handleActiveCards(activeCards) {
-    setCards(activeCards);
+    setShuffledPlayCards(activeCards);
   }
 
   return (
@@ -60,6 +73,8 @@ export default function App({ Component, pageProps }) {
         handleActiveCards={handleActiveCards}
         updateCard={updateCard}
         handleDelete={handleDelete}
+        shuffledCards={shuffledPlayCards.slice(0, 9)}
+        shuffle={shuffle}
       />
     </>
   );

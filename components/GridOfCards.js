@@ -26,8 +26,8 @@ export default function GridOfCards({ cards, handleActiveCards, isEditMode }) {
           <GameCardWrapper key={card.id}>
             {isEditMode ? (
               <GameCardLink href={`/cards/${card.id}`}>
-                {card.name}
-                {card.icon}
+                <h3>{card.name}</h3>
+                <StyledIcon>{card.icon}</StyledIcon>
               </GameCardLink>
             ) : (
               <GameCard
@@ -35,8 +35,8 @@ export default function GridOfCards({ cards, handleActiveCards, isEditMode }) {
                 onClick={() => handleActive(card.id)}
                 $isActive={card.isActive}
               >
-                {card.name}
-                {card.icon}
+                <h3>{card.name}</h3>
+                <StyledIcon>{card.icon}</StyledIcon>
               </GameCard>
             )}
           </GameCardWrapper>
@@ -61,9 +61,10 @@ const GameCardWrapper = styled.li`
 `;
 
 const GameCard = styled.button`
+  display: grid;
   width: 100%;
   padding: 2rem 1rem;
-  height: auto;
+  height: 100%;
 
   &:hover {
     border-color: white;
@@ -78,7 +79,7 @@ const GameCard = styled.button`
 `;
 
 const GameCardLink = styled(Link)`
-  display: block;
+  display: grid;
   text-decoration: none;
   color: black;
   text-align: center;
@@ -92,4 +93,8 @@ const GameCardLink = styled(Link)`
   background-color: ${(props) => (props.$isActive ? "#f2e7ae" : "#add1d9")};
   border-radius: 0.5rem;
   border: solid black 0.1rem;
+`;
+
+const StyledIcon = styled.p`
+  font-size: 1.5rem;
 `;
