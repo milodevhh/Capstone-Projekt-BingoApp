@@ -55,12 +55,11 @@ export default function App({ Component, pageProps }) {
   function shuffle() {
     const shuffledArray = [...cards].sort(() => Math.random() - 0.5);
     setShuffledPlayCards(shuffledArray);
+    router.push("/");
   }
-  //
-  // console.log("shuffledArray:", shuffledArray);
 
   function handleActiveCards(activeCards) {
-    setCards(activeCards);
+    setShuffledPlayCards(activeCards);
   }
 
   return (

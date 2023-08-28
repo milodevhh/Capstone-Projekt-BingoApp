@@ -32,4 +32,8 @@ export default createGlobalStyle`
     padding: 0;
   }
 
+  h3 {
+    font-size: 0.5rem;
+  }
+
 `;
