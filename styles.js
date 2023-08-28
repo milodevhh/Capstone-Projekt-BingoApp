@@ -21,7 +21,7 @@ export default createGlobalStyle`
     padding-top: 1.5rem;
     width: 80%;
     max-width: 37.5rem;
-    margin-inline: auto;
+    margin-inline: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -11,6 +11,8 @@ export default function App({ Component, pageProps }) {
   });
 
   function submitNewCard(name, icon) {
+    const index = Math.floor(Math.random() * cards.length);
+
     const newCard = {
       id: uid(),
       icon: icon,

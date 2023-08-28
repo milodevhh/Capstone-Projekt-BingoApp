@@ -16,9 +16,13 @@ export default function CardsEdit({ cards, updateCard, handleDelete }) {
 
   return (
     <main>
-      {card && card.name} {card && card.icon}
+      <h1>Edit your card</h1>
+      <h2>
+        {card && card.name} {card && card.icon}
+      </h2>
+
       <Form card={card} updateCard={updateCard} handleDelete={handleDelete} />
-      <StyledLink href={"/edit"}>go back</StyledLink>
+      <StyledLink href={"/edit"}>Go back</StyledLink>
     </main>
   );
 }

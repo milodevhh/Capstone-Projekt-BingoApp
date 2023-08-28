@@ -11,10 +11,11 @@ export default function EditPage({
 }) {
   return (
     <main>
-      <h1>Game cards</h1>
+      <h1>Pool of Game cards</h1>
       <h2>Add your own Game cards.</h2>
 
       <Form submitNewCard={submitNewCard} handleDelete={handleDelete} />
+      <p>Please click on a card to edit or delete it.</p>
       <GridOfCards cards={cards} isEditMode={true} updateCard={updateCard} />
       <StyledButton>Create new Bingo</StyledButton>
       <Navigation />
