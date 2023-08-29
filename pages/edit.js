@@ -14,7 +14,7 @@ export default function EditPage({
   query,
 }) {
   const { data, error, isLoading, isValidating } = useSWR(
-    `/api/edit?query=${query}`
+    query !== "" ? `/api/edit?query=${query}` : null
   );
 
   return (

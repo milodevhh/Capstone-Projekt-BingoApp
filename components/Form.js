@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { styled } from "styled-components";
 import { StyledButton } from "./StyledButton";
 import { StyledForm } from "./StyledForm";
 

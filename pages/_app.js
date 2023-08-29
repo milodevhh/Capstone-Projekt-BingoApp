@@ -81,7 +81,6 @@ export default function App({ Component, pageProps }) {
   function handleActiveCards(activeCards) {
     setShuffledPlayCards(activeCards);
   }
-  console.log(query);
   return (
     <>
       <GlobalStyle />
