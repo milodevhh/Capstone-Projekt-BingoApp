@@ -4,6 +4,7 @@ import initialCards from "@/lib/db";
 import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
+import { useState } from "react";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -20,7 +21,6 @@ const fetcher = async (url) => {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-
   const [cards, setCards] = useLocalStorageState("initialCards", {
     defaultValue: initialCards,
   });
@@ -31,6 +31,11 @@ export default function App({ Component, pageProps }) {
       defaultValue: [],
     }
   );
+
+  const [query, setQuery] = useState("");
+  function handleInputChange(event) {
+    setQuery(event.target.value);
+  }
 
   function submitNewCard(name, icon) {
     const newCard = {
@@ -76,7 +81,7 @@ export default function App({ Component, pageProps }) {
   function handleActiveCards(activeCards) {
     setShuffledPlayCards(activeCards);
   }
-
+  console.log(query);
   return (
     <>
       <GlobalStyle />
@@ -91,6 +96,8 @@ export default function App({ Component, pageProps }) {
           handleDelete={handleDelete}
           shuffledCards={shuffledPlayCards.slice(0, 9)}
           shuffle={shuffle}
+          handleInputChange={handleInputChange}
+          query={query}
         />
       </SWRConfig>
     </>

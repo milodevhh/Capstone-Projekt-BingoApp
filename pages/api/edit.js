@@ -1,8 +1,8 @@
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    const name = "dog";
+    const { query } = req.query;
     const apiKey = process.env.Api_Key;
-    const apiUrl = `https://api.api-ninjas.com/v1/emoji?name=${name}`;
+    const apiUrl = `https://api.api-ninjas.com/v1/emoji?name=${query}`;
 
     try {
       const response = await fetch(apiUrl, {
