@@ -12,7 +12,7 @@ export default function EditPage({
   handleDelete,
   shuffle,
 }) {
-  const { data, error, isLoading, isValidating } = useSWR(`/pages/api/edit`);
+  const { data, error, isLoading, isValidating } = useSWR(`/api/edit`);
   const [icons, setIcons] = useState([]);
 
   console.log(data);

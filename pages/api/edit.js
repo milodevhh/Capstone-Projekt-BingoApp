@@ -1,15 +1,26 @@
-export default async function handler(request, response) {
-  if (request.method === "GET") {
-    const Api_Key = process.env.Api_Key;
-    const URL = `https://api.api-ninjas.com/v1/emoji?name=dog`;
+export default async function handler(req, res) {
+  if (req.method === "GET") {
+    const name = "dog";
+    const apiKey = process.env.Api_Key;
+    const apiUrl = `https://api.api-ninjas.com/v1/emoji?name=${name}`;
+
     try {
-      const emojiResponse = await fetch(URL);
-      const emoji = await emojiResponse.json();
-      response.status(200).json({ results: emoji.results });
+      const response = await fetch(apiUrl, {
+        headers: {
+          "X-Api-Key": apiKey,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      const emojiData = await response.json();
+      res.status(200).json(emojiData);
     } catch (error) {
-      response.status(500).json({ message: "error" });
+      res.status(500).json({ message: "Request failed" });
     }
   } else {
-    response.status(405).json({ message: "method not allowed" });
+    res.status(405).json({ message: "Method not allowed" });
   }
 }
