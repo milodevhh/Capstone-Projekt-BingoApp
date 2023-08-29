@@ -3,9 +3,27 @@ import { uid } from "uid";
 import initialCards from "@/lib/db";
 import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
+import useSWR from "swr";
+
+const fetcher = async (url) => {
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    const error = new Error("An error occurred while fetching the data.");
+    error.info = await res.json();
+    error.status = res.status;
+    throw error;
+  }
+
+  return res.json();
+};
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const { data, error, isLoading, isValidating } = useSWR(
+    "https://api.api-ninjas.com/v1/emoji?name="
+  );
+
   const [cards, setCards] = useLocalStorageState("initialCards", {
     defaultValue: initialCards,
   });
