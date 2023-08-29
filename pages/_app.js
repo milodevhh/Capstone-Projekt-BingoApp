@@ -3,7 +3,7 @@ import { uid } from "uid";
 import initialCards from "@/lib/db";
 import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import { SWRConfig } from "swr";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -20,9 +20,6 @@ const fetcher = async (url) => {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const { data, error, isLoading, isValidating } = useSWR(
-    "https://api.api-ninjas.com/v1/emoji?name="
-  );
 
   const [cards, setCards] = useLocalStorageState("initialCards", {
     defaultValue: initialCards,
@@ -83,17 +80,19 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component
-        {...pageProps}
-        cards={cards}
-        setCards={setCards}
-        submitNewCard={submitNewCard}
-        handleActiveCards={handleActiveCards}
-        updateCard={updateCard}
-        handleDelete={handleDelete}
-        shuffledCards={shuffledPlayCards.slice(0, 9)}
-        shuffle={shuffle}
-      />
+      <SWRConfig value={{ fetcher }}>
+        <Component
+          {...pageProps}
+          cards={cards}
+          setCards={setCards}
+          submitNewCard={submitNewCard}
+          handleActiveCards={handleActiveCards}
+          updateCard={updateCard}
+          handleDelete={handleDelete}
+          shuffledCards={shuffledPlayCards.slice(0, 9)}
+          shuffle={shuffle}
+        />
+      </SWRConfig>
     </>
   );
 }

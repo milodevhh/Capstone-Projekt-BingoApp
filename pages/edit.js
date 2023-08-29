@@ -2,6 +2,8 @@ import Form from "@/components/Form";
 import Navigation from "@/components/Navigation";
 import GridOfCards from "@/components/GridOfCards";
 import { StyledButton } from "@/components/StyledButton";
+import useSWR from "swr";
+import { useState } from "react";
 
 export default function EditPage({
   cards,
@@ -10,6 +12,11 @@ export default function EditPage({
   handleDelete,
   shuffle,
 }) {
+  const { data, error, isLoading, isValidating } = useSWR(`/pages/api/edit`);
+  const [icons, setIcons] = useState([]);
+
+  console.log(data);
+
   return (
     <main>
       <h1>Pool of Gamecards</h1>
