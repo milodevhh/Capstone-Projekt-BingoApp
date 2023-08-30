@@ -1,5 +1,6 @@
 import GridOfCards from "@/components/GridOfCards";
 import Navigation from "@/components/Navigation";
+import { WinIcon } from "@/components/SVG/win";
 import { StyledButton } from "@/components/StyledButton";
 
 export default function HomePage({
@@ -20,6 +21,7 @@ export default function HomePage({
         handleActiveCards={handleActiveCards}
       />
       <StyledButton onClick={shuffle}>Create new Bingo</StyledButton>
+      <WinIcon color="" width="3rem" height="3rem" />
 
       <p>
         The first player to complete a horizontal or vertical line shouts bingo
