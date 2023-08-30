@@ -57,8 +57,12 @@ export default function HomePage({
         {bingo ? "Restart the game" : "Create new Bingo"}
       </StyledButton>
 
-      {bingo ? <WinIcon color="" width="3rem" height="3rem" /> : null}
-      {bingo ? <StyledWinText>Congratulations you won!</StyledWinText> : null}
+      {bingo && (
+        <>
+          <WinIcon color="" width="3rem" height="3rem" />
+          <StyledWinText>Congratulations you won!</StyledWinText>
+        </>
+      )}
 
       <p>
         The first player to complete a horizontal or vertical line shouts bingo
