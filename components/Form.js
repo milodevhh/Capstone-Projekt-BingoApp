@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { styled } from "styled-components";
 import { StyledButton } from "./StyledButton";
 import { StyledForm } from "./StyledForm";
 
@@ -8,6 +7,8 @@ export default function Form({
   card,
   updateCard,
   handleDelete,
+  handleInputChange,
+  emojis,
 }) {
   const router = useRouter();
 
@@ -36,32 +37,19 @@ export default function Form({
         pattern="[a-zA-Z]*"
         maxLength={15}
         required
+        onChange={handleInputChange}
         defaultValue={card && card.name}
       />
       <label htmlFor="icon">Choose an icon:</label>
       <select name="icon" id="icon" defaultValue={card && card.icon}>
         <option value="">--Please choose an icon--</option>
-        <option value="🚜">🚜</option>
-        <option value="🐴">🐴</option>
-        <option value="🦌">🦌</option>
-        <option value="🌻">🌻</option>
-        <option value="🌈">🌈</option>
-        <option value="🐗">🐗</option>
-        <option value="🎡">🎡</option>
-        <option value="🛝">🛝</option>
-        <option value="🍓">🍓</option>
-        <option value="🏍️">🏍️</option>
-        <option value="🚐">🚐</option>
-        <option value="🚚">🚚</option>
-        <option value="🚍">🚍</option>
-        <option value="🚲">🚲</option>
-        <option value="🛴">🛴</option>
-        <option value="🚦">🚦</option>
-        <option value="⛽️">⛽️</option>
-        <option value="🌅">🌅</option>
-        <option value="⛰️">⛰️</option>
-        <option value="🔥">🔥</option>
-        <option value="⛺️">⛺️</option>
+        {emojis
+          ? emojis.map((emoji) => (
+              <option key={emoji.name} value={emoji.character}>
+                {emoji.character}
+              </option>
+            ))
+          : null}
       </select>
       <StyledButton type="submit">
         {card ? "Save card" : "Add card"}
