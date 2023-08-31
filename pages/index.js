@@ -53,16 +53,15 @@ export default function HomePage({
         cards={shuffledCards}
         handleActiveCards={handleActiveCards}
       />
+      {bingo && (
+        <>
+          <StyledWinText>Congratulations you won!</StyledWinText>
+          <WinIcon color="" width="3rem" height="3rem" />
+        </>
+      )}
       <StyledButton onClick={shuffle}>
         {bingo ? "Restart the game" : "Create new Bingo"}
       </StyledButton>
-
-      {bingo && (
-        <>
-          <WinIcon color="" width="3rem" height="3rem" />
-          <StyledWinText>Congratulations you won!</StyledWinText>
-        </>
-      )}
 
       <Navigation />
     </main>
