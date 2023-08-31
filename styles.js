@@ -1,4 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { Sono } from "@next/font/google";
+
+const sono = Sono({ subsets: ["latin"] });
 
 export default createGlobalStyle`
   *,
@@ -11,7 +14,7 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: ${sono.style.fontFamily};
     display: flex;
     flex-direction: column;
     align-items: center;
