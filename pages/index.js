@@ -64,10 +64,6 @@ export default function HomePage({
         </>
       )}
 
-      <p>
-        The first player to complete a horizontal or vertical line shouts bingo
-        loudly and wins.
-      </p>
       <Navigation />
     </main>
   );

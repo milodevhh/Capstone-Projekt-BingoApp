@@ -2,10 +2,14 @@ import { PlayIcon } from "./SVG/play";
 import Link from "next/link";
 import { styled } from "styled-components";
 import { EditIcon } from "./SVG/edit";
+import { WelcomeIcon } from "./SVG/welcome";
 
 export default function Navigation() {
   return (
     <StyledNavigation>
+      <StyledLink href="/welcome">
+        <WelcomeIcon color="" width="3rem" height="3rem" />
+      </StyledLink>
       <StyledLink href="/">
         <PlayIcon color="" width="3rem" height="3rem" />
       </StyledLink>
