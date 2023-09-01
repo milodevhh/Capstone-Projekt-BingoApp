@@ -62,7 +62,7 @@ export default function App({ Component, pageProps }) {
 
   function handleDelete(id) {
     const answer = window.confirm(
-      "Are you sure, Do you want to delete the card"
+      "Are you sure, Do you want to delete the card?"
     );
     if (answer) {
       const deleteCards = cards.filter((card) => card.id !== id);
