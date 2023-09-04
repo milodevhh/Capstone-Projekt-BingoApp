@@ -1,73 +1,25 @@
-import GridOfCards from "@/components/GridOfCards";
 import Navigation from "@/components/Navigation";
-import { WinIcon } from "@/components/SVG/win";
-import { StyledButton } from "@/components/StyledButton";
-import { styled } from "styled-components";
+import Image from "next/image";
+import bingo from "@/assets/Bingo.gif";
+import { StyledLink } from "../components/StyledLink";
 
-export default function HomePage({
-  handleActiveCards,
-  shuffledCards,
-  shuffle,
-}) {
-  const firstHorizontalRowWin =
-    shuffledCards[0]?.isActive &&
-    shuffledCards[1]?.isActive &&
-    shuffledCards[2]?.isActive;
-  const secondHorizontalRowWin =
-    shuffledCards[3]?.isActive &&
-    shuffledCards[4]?.isActive &&
-    shuffledCards[5]?.isActive;
-  const thirdHorizontalRowWin =
-    shuffledCards[6]?.isActive &&
-    shuffledCards[7]?.isActive &&
-    shuffledCards[8]?.isActive;
-  const firstHorizontalColumWin =
-    shuffledCards[0]?.isActive &&
-    shuffledCards[3]?.isActive &&
-    shuffledCards[6]?.isActive;
-  const secondHorizontalColumWin =
-    shuffledCards[1]?.isActive &&
-    shuffledCards[4]?.isActive &&
-    shuffledCards[7]?.isActive;
-  const thirdHorizontalColumWin =
-    shuffledCards[2]?.isActive &&
-    shuffledCards[5]?.isActive &&
-    shuffledCards[8]?.isActive;
-  const bingo =
-    firstHorizontalRowWin ||
-    secondHorizontalRowWin ||
-    thirdHorizontalRowWin ||
-    firstHorizontalColumWin ||
-    secondHorizontalColumWin ||
-    thirdHorizontalColumWin;
-
+export default function WelcomePage() {
   return (
     <main>
-      <h1>Road Trip Bingo</h1>
-      <h2>Play</h2>
+      <h1>Welcome</h1>
+      <h2>Road Trip Bingo</h2>
+      <p>More fun on trips with a simple Gamecard generator.</p>
       <p>
-        Click on a card if you have seen what is shown on it in your
-        surroundings. Have fun playing...
+        On the play page you will find the button create new game, press it and
+        your first game will be displayed.
       </p>
-      <GridOfCards
-        cards={shuffledCards}
-        handleActiveCards={handleActiveCards}
-      />
-      {bingo && (
-        <>
-          <StyledWinText>Congratulations you won!</StyledWinText>
-          <WinIcon color="" width="3rem" height="3rem" />
-        </>
-      )}
-      <StyledButton onClick={shuffle}>
-        {bingo ? "Restart the game" : "Create new Bingo"}
-      </StyledButton>
-
+      <p>
+        The first player to complete a horizontal or vertical line shouts bingo
+        loudly and wins.
+      </p>
+      <StyledLink href={"/play"}>Let´s play</StyledLink>
+      <Image src={bingo} alt="bingo gif" height={200} width={200} />
       <Navigation />
     </main>
   );
 }
-
-const StyledWinText = styled.p`
-  color: #f2b988;
-`;

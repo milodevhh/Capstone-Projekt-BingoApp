@@ -7,10 +7,10 @@ import { WelcomeIcon } from "./SVG/welcome";
 export default function Navigation() {
   return (
     <StyledNavigation>
-      <StyledLink href="/welcome">
+      <StyledLink href="/">
         <WelcomeIcon color="" width="3rem" height="3rem" />
       </StyledLink>
-      <StyledLink href="/">
+      <StyledLink href="/play">
         <PlayIcon color="" width="3rem" height="3rem" />
       </StyledLink>
       <StyledLink href="/edit">
