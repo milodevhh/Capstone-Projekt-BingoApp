@@ -1,8 +1,7 @@
 import Form from "@/components/Form";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import useSWR from "swr";
+import { StyledLink } from "../../components/StyledLink";
 
 export default function CardsEdit({ cards, updateCard, handleDelete }) {
   const router = useRouter();
@@ -34,17 +33,3 @@ export default function CardsEdit({ cards, updateCard, handleDelete }) {
     </main>
   );
 }
-
-const StyledLink = styled(Link)`
-  background-color: rgb(239, 239, 239);
-  padding: 0.8rem;
-  border-radius: 0.6rem;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  font-size: inherit;
-  &:active {
-    transform: scale(0.95);
-  }
-`;
