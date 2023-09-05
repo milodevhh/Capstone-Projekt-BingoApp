@@ -1,10 +1,8 @@
 import { styled } from "styled-components";
-import { Sono } from "@next/font/google";
+import Link from "next/link";
 
-const sono = Sono({ subsets: ["latin"] });
-
-export const StyledButton = styled.button`
-  font-family: ${sono.style.fontFamily};
+export const StyledLink = styled(Link)`
+  background-color: rgb(239, 239, 239);
   padding: 0.8rem;
   border-radius: 0.6rem;
   color: black;
