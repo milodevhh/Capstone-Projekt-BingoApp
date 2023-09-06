@@ -21,10 +21,14 @@ export default function Navigation() {
 }
 
 const StyledNavigation = styled.nav`
+  position: fixed;
+  bottom: 0;
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
   display: flex;
   gap: 2rem;
   justify-content: center;
-  padding-bottom: 1rem;
+  background-color: white;
 `;
 
 export const StyledLink = styled(Link)`
