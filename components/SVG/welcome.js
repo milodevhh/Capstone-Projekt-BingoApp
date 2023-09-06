@@ -1,5 +1,3 @@
-import { styled } from "styled-components";
-
 export function WelcomeIcon({ width, height, color }) {
   return (
     <svg

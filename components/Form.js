@@ -27,7 +27,7 @@ export default function Form({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <label htmlFor="name">Name or Text:</label>
+      <label htmlFor="name">Term, Name or Text:</label>
 
       <input
         id="name"
@@ -40,6 +40,10 @@ export default function Form({
         onChange={handleInputChange}
         defaultValue={card && card.name}
       />
+      <p>
+        Please write your term in English, after that one or more icons will be
+        displayed in the select field, please choose one.
+      </p>
       <label htmlFor="icon">Choose an icon:</label>
       <select name="icon" id="icon" defaultValue={card && card.icon}>
         <option value="">--Please choose an icon--</option>
