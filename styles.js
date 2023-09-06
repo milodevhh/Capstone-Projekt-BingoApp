@@ -23,7 +23,7 @@ export default createGlobalStyle`
   main {
     padding-top: 1.5rem;
     width: 80%;
-    max-width: 37.5rem;
+    max-width: 32rem;
     margin-inline: 2rem;
     display: flex;
     flex-direction: column;

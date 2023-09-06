@@ -5,6 +5,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
 import { useState } from "react";
+import Head from "next/head";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -85,6 +86,10 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <SWRConfig value={{ fetcher }}>
+        <Head>
+          <meta name="keywords" content="bingo, road trip, game" />
+          <title>Road Trip Bingo</title>
+        </Head>
         <Component
           {...pageProps}
           cards={cards}
