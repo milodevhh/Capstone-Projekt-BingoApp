@@ -1,4 +1,6 @@
-export function WelcomeIcon({ color, width, height }) {
+import { styled } from "styled-components";
+
+export function WelcomeIcon({ width, height, color }) {
   return (
     <svg
       fill={color}

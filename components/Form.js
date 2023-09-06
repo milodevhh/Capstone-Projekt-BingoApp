@@ -52,11 +52,11 @@ export default function Form({
           : null}
       </select>
       <StyledButton type="submit">
-        {card ? "Save card" : "Add card"}
+        {card ? "Save card ✔️" : "Add card ➕"}
       </StyledButton>
       {card && (
         <StyledButton type="button" onClick={() => handleDelete(card.id)}>
-          Delete card
+          Delete card ✖️
         </StyledButton>
       )}
     </StyledForm>

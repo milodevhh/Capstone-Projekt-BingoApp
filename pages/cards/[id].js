@@ -29,7 +29,7 @@ export default function CardsEdit({ cards, updateCard, handleDelete }) {
         handleDelete={handleDelete}
         emojis={data}
       />
-      <StyledLink href={"/edit"}>Go back</StyledLink>
+      <StyledLink href={"/edit"}>🔙 Go back</StyledLink>
     </main>
   );
 }

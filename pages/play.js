@@ -62,8 +62,6 @@ export default function HomePage({
       <StyledButton onClick={shuffle}>
         {bingo ? "Restart the game" : "Create new Bingo"}
       </StyledButton>
-
-      <Navigation />
     </main>
   );
 }

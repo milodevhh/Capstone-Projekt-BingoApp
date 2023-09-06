@@ -31,7 +31,6 @@ export default function EditPage({
       <p>Please click on a card to edit or delete it.</p>
       <GridOfCards cards={cards} isEditMode={true} updateCard={updateCard} />
       <StyledButton onClick={shuffle}>Create new Bingo</StyledButton>
-      <Navigation />
     </main>
   );
 }
