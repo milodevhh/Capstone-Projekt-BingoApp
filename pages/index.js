@@ -3,7 +3,7 @@ import Image from "next/image";
 import bingo from "@/assets/Bingo.gif";
 import { StyledLink } from "../components/StyledLink";
 
-export default function WelcomePage() {
+export default function WelcomePage({ activeSite }) {
   return (
     <main>
       <h1>Welcome</h1>
@@ -19,7 +19,6 @@ export default function WelcomePage() {
       </p>
       <StyledLink href={"/play"}>Let´s play</StyledLink>
       <Image src={bingo} alt="bingo gif" height={200} width={200} />
-      <Navigation />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-export function WelcomeIcon({ color, width, height }) {
+export function WelcomeIcon({ width, height, color }) {
   return (
     <svg
       fill={color}

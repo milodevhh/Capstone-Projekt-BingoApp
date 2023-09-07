@@ -4,7 +4,9 @@ import initialCards from "@/lib/db";
 import useLocalStorageState from "use-local-storage-state";
 import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import Navigation from "@/components/Navigation";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -81,10 +83,26 @@ export default function App({ Component, pageProps }) {
   function handleActiveCards(activeCards) {
     setShuffledPlayCards(activeCards);
   }
+
+  const [activeSite, setActiveSite] = useState("home");
+  useEffect(() => {
+    if (router.pathname === "/") {
+      setActiveSite("home");
+    } else if (router.pathname === "/play") {
+      setActiveSite("play");
+    } else if (router.pathname === "/edit") {
+      setActiveSite("edit");
+    }
+  }, [setActiveSite, router.pathname]);
+
   return (
     <>
       <GlobalStyle />
       <SWRConfig value={{ fetcher }}>
+        <Head>
+          <meta name="keywords" content="bingo, road trip, game" />
+          <title>Road Trip Bingo</title>
+        </Head>
         <Component
           {...pageProps}
           cards={cards}
@@ -97,7 +115,9 @@ export default function App({ Component, pageProps }) {
           shuffle={shuffle}
           handleInputChange={handleInputChange}
           query={query}
+          activeSite={activeSite}
         />
+        <Navigation activeSite={activeSite} />
       </SWRConfig>
     </>
   );

@@ -21,9 +21,9 @@ export default createGlobalStyle`
   }
 
   main {
-    padding-top: 1.5rem;
-    width: 80%;
-    max-width: 37.5rem;
+    padding: 1rem 0 6rem 0;
+    width: 85%;
+    max-width: 32rem;
     margin-inline: 2rem;
     display: flex;
     flex-direction: column;
