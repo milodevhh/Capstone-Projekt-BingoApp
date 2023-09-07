@@ -47,7 +47,7 @@ export default function HomePage({
       <h2>Play</h2>
       <p>
         Click on a card if you have seen what is shown on it in your
-        surroundings. Have fun playing...
+        surroundings. A horizontal or vertical line wins, have fun playing...
       </p>
       <GridOfCards
         cards={shuffledCards}

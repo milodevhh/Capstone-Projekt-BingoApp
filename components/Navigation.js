@@ -36,6 +36,8 @@ const StyledNavigation = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: 36rem;
+
   padding: 1rem 1rem;
   display: flex;
   gap: 2rem;
