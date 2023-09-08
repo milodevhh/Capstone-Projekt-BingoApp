@@ -1,7 +1,7 @@
 import GridOfCards from "@/components/GridOfCards";
 import { WinIcon } from "@/components/SVG/win";
 import { StyledButton } from "@/components/StyledButton";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function HomePage({
   handleActiveCards,
