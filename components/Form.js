@@ -46,8 +46,8 @@ export default function Form({
           defaultValue={card && card.name}
         />
         <p>
-          Please write your term in English, after that one or more icons will
-          be displayed in the select field, please choose one.
+          Please write your term in British English, after that one or more
+          icons will be displayed in the select field, please choose one.
         </p>
         <label htmlFor="icon">Choose an icon:</label>
         <select name="icon" id="icon" defaultValue={card && card.icon}>
