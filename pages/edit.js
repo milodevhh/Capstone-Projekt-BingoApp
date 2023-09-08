@@ -1,5 +1,4 @@
 import Form from "@/components/Form";
-import Navigation from "@/components/Navigation";
 import GridOfCards from "@/components/GridOfCards";
 import { StyledButton } from "@/components/StyledButton";
 import useSWR from "swr";

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { Sono } from "@next/font/google";
 
 const sono = Sono({ subsets: ["latin"] });
