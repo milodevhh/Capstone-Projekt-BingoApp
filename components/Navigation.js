@@ -1,6 +1,6 @@
 import { PlayIcon } from "./SVG/play";
 import Link from "next/link";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { EditIcon } from "./SVG/edit";
 import { WelcomeIcon } from "./SVG/welcome";
 

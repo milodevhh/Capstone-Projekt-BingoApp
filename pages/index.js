@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import Image from "next/image";
 import bingo from "@/assets/Bingo.gif";
 import { StyledLink } from "../components/StyledLink";

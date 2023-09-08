@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { StyledButton } from "./StyledButton";
 import { StyledForm } from "./StyledForm";
+import ModalDelete from "./ModalDelete";
+import { useState } from "react";
 
 export default function Form({
   submitNewCard,
@@ -25,44 +27,55 @@ export default function Form({
     router.push("/edit");
   }
 
-  return (
-    <StyledForm onSubmit={handleSubmit}>
-      <label htmlFor="name">Term, Name or Text:</label>
+  const [modal, setModal] = useState();
 
-      <input
-        id="name"
-        name="name"
-        type="text"
-        placeholder="Text for your card"
-        pattern="[a-zA-Z]*"
-        maxLength={15}
-        required
-        onChange={handleInputChange}
-        defaultValue={card && card.name}
-      />
-      <p>
-        Please write your term in English, after that one or more icons will be
-        displayed in the select field, please choose one.
-      </p>
-      <label htmlFor="icon">Choose an icon:</label>
-      <select name="icon" id="icon" defaultValue={card && card.icon}>
-        <option value="">--Please choose an icon--</option>
-        {emojis
-          ? emojis.map((emoji) => (
-              <option key={emoji.name} value={emoji.character}>
-                {emoji.character}
-              </option>
-            ))
-          : null}
-      </select>
-      <StyledButton type="submit">
-        {card ? "Save card ✔️" : "Add card ➕"}
-      </StyledButton>
-      {card && (
-        <StyledButton type="button" onClick={() => handleDelete(card.id)}>
-          Delete card ✖️
+  return (
+    <>
+      <StyledForm onSubmit={handleSubmit}>
+        <label htmlFor="name">Term, Name or Text:</label>
+
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Text for your card"
+          pattern="[a-zA-Z]*"
+          maxLength={15}
+          required
+          onChange={handleInputChange}
+          defaultValue={card && card.name}
+        />
+        <p>
+          Please write your term in British English, after that one or more
+          icons will be displayed in the select field, please choose one.
+        </p>
+        <label htmlFor="icon">Choose an icon:</label>
+        <select name="icon" id="icon" defaultValue={card && card.icon}>
+          <option value="">--Please choose an icon--</option>
+          {emojis
+            ? emojis.map((emoji) => (
+                <option key={emoji.name} value={emoji.character}>
+                  {emoji.character}
+                </option>
+              ))
+            : null}
+        </select>
+        <StyledButton type="submit">
+          {card ? "Save card ✔️" : "Add card ➕"}
         </StyledButton>
+        {card && (
+          <StyledButton type="button" onClick={() => setModal(true)}>
+            Delete card ✖️
+          </StyledButton>
+        )}
+      </StyledForm>
+      {modal === true && (
+        <ModalDelete
+          handleDelete={handleDelete}
+          setModal={setModal}
+          id={card.id}
+        />
       )}
-    </StyledForm>
+    </>
   );
 }
